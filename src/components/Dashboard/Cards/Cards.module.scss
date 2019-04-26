@@ -1,0 +1,12 @@
+.Cards {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: space-between;
+
+  &.NoItem {
+    justify-content: center;
+  }
+}

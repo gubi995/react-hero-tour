@@ -1,0 +1,26 @@
+@import '../../../../styles/variables';
+
+.NavigationItem {
+  height: 100%;
+  width: auto;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  box-sizing: border-box;
+  font-weight: bold;
+  color: $primary-color;
+  border-bottom: 0px solid white;
+  transition: border-bottom 0.2s ease-out;
+  margin: auto;
+  text-decoration: none;
+
+  &:hover,
+  &:active,
+  &.active {
+    background-color: #607d8b;
+    color: white;
+    border-bottom: 5px solid $light-blue;
+    cursor: pointer;
+  }
+}

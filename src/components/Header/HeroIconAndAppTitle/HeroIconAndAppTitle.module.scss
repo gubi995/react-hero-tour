@@ -1,0 +1,23 @@
+@import '../../../styles/variables';
+
+.HeroIconAndAppTitle {
+  display: flex;
+  align-items: center;
+  color: $primary-color;
+  font-size: xx-large;
+  font-weight: bold;
+  cursor: pointer;
+
+  .Title {
+    display: none;
+    white-space: nowrap;
+  }
+}
+
+@media (min-width: 600px) {
+  .HeroIconAndAppTitle {
+    .Title {
+      display: flex;
+    }
+  }
+}

@@ -1,0 +1,23 @@
+@import '../../styles/variables';
+
+.PageNotFound {
+  text-align: center;
+
+  & .Caption {
+    font-size: -webkit-xxx-large;
+    color: $primary-color;
+  }
+
+  & .Image {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (min-width: 600px) {
+  .PageNotFound {
+    & .Image {
+      width: 600px;
+    }
+  }
+}
