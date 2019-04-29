@@ -1,0 +1,12 @@
+.AddHero {
+  display: flex;
+  align-items: center;
+
+  > * {
+    margin: 0 5px;
+
+    &:first-child {
+      margin-left: 0px;
+    }
+  }
+}
