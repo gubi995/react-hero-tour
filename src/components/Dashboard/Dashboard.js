@@ -82,6 +82,13 @@ class Dashboard extends Component {
     }));
   };
 
+  itemClickHandler = index => {
+    this.setState({
+      inputValue: this.state.filteredHeroes[index],
+      searchContainerOpened: false
+    });
+  };
+
   render() {
     return (
       <div className={classes.Dashboard}>
@@ -93,6 +100,7 @@ class Dashboard extends Component {
           selectedItemIndex={this.state.selectedItemIndex}
           changed={this.filterHeroHandler}
           keyDown={this.keyDownEventHandler}
+          clicked={this.itemClickHandler}
           value={this.state.inputValue}
           opened={this.state.searchContainerOpened}
         />

@@ -15,7 +15,11 @@ const HeroSearch = props => {
       }
 
       return (
-        <div key={index} className={itemClasses.join(' ')}>
+        <div
+          key={index}
+          className={itemClasses.join(' ')}
+          onClick={() => props.clicked(index)}
+        >
           {heroName}
         </div>
       );
