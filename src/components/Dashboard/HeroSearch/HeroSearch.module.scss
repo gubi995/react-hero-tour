@@ -14,7 +14,8 @@
   cursor: pointer;
   box-sizing: border-box;
 
-  &:hover {
+  &:hover,
+  &.selected {
     color: $primary-color;
     font-weight: bold;
   }

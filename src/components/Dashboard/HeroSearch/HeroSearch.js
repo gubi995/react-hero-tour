@@ -7,11 +7,19 @@ const HeroSearch = props => {
   let searchItems;
 
   if (heroesNames) {
-    searchItems = heroesNames.map((heroName, index) => (
-      <div key={index} className={classes.SearchResultItem}>
-        {heroName}
-      </div>
-    ));
+    searchItems = heroesNames.map((heroName, index) => {
+      let itemClasses = [classes.SearchResultItem];
+
+      if (index === props.selectedItemIndex) {
+        itemClasses.push(classes.selected);
+      }
+
+      return (
+        <div key={index} className={itemClasses.join(' ')}>
+          {heroName}
+        </div>
+      );
+    });
   }
 
   return (
@@ -19,6 +27,7 @@ const HeroSearch = props => {
       <input
         type="text"
         onChange={event => props.changed(event)}
+        onKeyDown={event => props.keyDown(event)}
         value={props.value}
       />
       <div
