@@ -30,15 +30,17 @@ const HeroSearch = props => {
         onKeyDown={event => props.keyDown(event)}
         value={props.value}
       />
-      <div
-        className={
-          heroesNames && heroesNames.length !== 0
-            ? classes.SearchResultContainer
-            : null
-        }
-      >
-        {searchItems}
-      </div>
+      {props.opened && (
+        <div
+          className={
+            heroesNames && heroesNames.length !== 0
+              ? classes.SearchResultContainer
+              : null
+          }
+        >
+          {searchItems}
+        </div>
+      )}
     </React.Fragment>
   );
 };

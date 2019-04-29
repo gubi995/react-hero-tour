@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import classes from './Dashboard.module.scss';
 import Cards from './Cards/Cards';
 import HeroSearch from './HeroSearch/HeroSearch';
-import * as constants from '../../shared/constants';
+import * as keyCodes from '../../shared/keyCodes';
 
 class Dashboard extends Component {
   state = {
@@ -17,7 +17,8 @@ class Dashboard extends Component {
     ],
     filteredHeroes: [],
     inputValue: '',
-    selectedItemIndex: 0
+    selectedItemIndex: 0,
+    searchContainerOpened: false
   };
 
   filterHeroHandler = event => {
@@ -33,29 +34,52 @@ class Dashboard extends Component {
     this.setState({
       inputValue: inputValue,
       filteredHeroes: filteredHeroes,
-      selectedItemIndex: 0
+      selectedItemIndex: 0,
+      searchContainerOpened: true
     });
   };
 
-  selectedItemIndexHandler = event => {
+  keyDownEventHandler = event => {
     const keyCode = event.keyCode;
-    const selectedItemIndex = this.state.selectedItemIndex;
 
-    if (
-      keyCode === constants.DOWN_ARROW_KEY_CODE &&
-      selectedItemIndex < this.state.filteredHeroes.length - 1
-    ) {
+    switch (keyCode) {
+      case keyCodes.DOWN_ARROW:
+        this.increaseSelectedItemIndex();
+        break;
+      case keyCodes.UP_ARROW:
+        this.decreaseSelectedItemIndex();
+        break;
+      case keyCodes.ENTER:
+        this.selectItem();
+        break;
+      default:
+        break;
+    }
+  };
+
+  increaseSelectedItemIndex = () => {
+    if (this.state.selectedItemIndex < this.state.filteredHeroes.length - 1) {
       this.setState(prevState => ({
-        selectedItemIndex: prevState.selectedItemIndex + 1
-      }));
-    } else if (
-      keyCode === constants.UP_ARROW_KEY_CODE &&
-      selectedItemIndex > 0
-    ) {
-      this.setState(prevState => ({
-        selectedItemIndex: prevState.selectedItemIndex - 1
+        selectedItemIndex: prevState.selectedItemIndex + 1,
+        searchContainerOpened: true
       }));
     }
+  };
+
+  decreaseSelectedItemIndex = () => {
+    if (this.state.selectedItemIndex > 0) {
+      this.setState(prevState => ({
+        selectedItemIndex: prevState.selectedItemIndex - 1,
+        searchContainerOpened: true
+      }));
+    }
+  };
+
+  selectItem = () => {
+    this.setState(prevState => ({
+      inputValue: prevState.filteredHeroes[prevState.selectedItemIndex],
+      searchContainerOpened: false
+    }));
   };
 
   render() {
@@ -68,8 +92,9 @@ class Dashboard extends Component {
           filteredHeroes={this.state.filteredHeroes}
           selectedItemIndex={this.state.selectedItemIndex}
           changed={this.filterHeroHandler}
-          keyDown={this.selectedItemIndexHandler}
+          keyDown={this.keyDownEventHandler}
           value={this.state.inputValue}
+          opened={this.state.searchContainerOpened}
         />
       </div>
     );
