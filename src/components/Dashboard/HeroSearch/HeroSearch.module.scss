@@ -1,3 +1,25 @@
-.HeroSearch {
-    
+@import '../../../styles/variables.scss';
+
+.SearchResultContainer {
+  width: fit-content;
+  min-width: 160px;
+  border: 2px solid lightgray;
+  border-radius: 3px;
+  padding: 0 10px;
+}
+
+.SearchResultItem {
+  color: $primary-color;
+  border-bottom: 1px solid $primary-color;
+  cursor: pointer;
+  box-sizing: border-box;
+
+  &:hover {
+    color: $primary-color;
+    font-weight: bold;
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
 }
