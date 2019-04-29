@@ -3,11 +3,11 @@ import React from 'react';
 import classes from './HeroSearch.module.scss';
 
 const HeroSearch = props => {
-  const heroesNames = props.filteredHeroes;
+  const heroes = props.filteredHeroes;
   let searchItems;
 
-  if (heroesNames) {
-    searchItems = heroesNames.map((heroName, index) => {
+  if (heroes) {
+    searchItems = heroes.map((hero, index) => {
       let itemClasses = [classes.SearchResultItem];
 
       if (index === props.selectedItemIndex) {
@@ -20,7 +20,7 @@ const HeroSearch = props => {
           className={itemClasses.join(' ')}
           onClick={() => props.clicked(index)}
         >
-          {heroName}
+          {hero.name}
         </div>
       );
     });
@@ -37,9 +37,7 @@ const HeroSearch = props => {
       {props.opened && (
         <div
           className={
-            heroesNames && heroesNames.length !== 0
-              ? classes.SearchResultContainer
-              : null
+            heroes && heroes.length !== 0 ? classes.SearchResultContainer : null
           }
         >
           {searchItems}

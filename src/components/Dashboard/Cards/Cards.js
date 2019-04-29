@@ -4,14 +4,12 @@ import classes from './Cards.module.scss';
 import Card from './Card/Card';
 
 const Cards = props => {
-  const heroNames = props.heroes;
+  const heros = props.heroes;
   const cardsClasses = [classes.Cards];
   let cards;
 
-  if (heroNames && heroNames.length !== 0) {
-    cards = heroNames.map((heroName, index) => (
-      <Card key={index} name={heroName} />
-    ));
+  if (heros && heros.length !== 0) {
+    cards = heros.map(hero => <Card key={hero.id} name={hero.name} />);
   } else {
     cards = <p style={{ fontWeight: 'bold' }}>No available hero</p>;
     cardsClasses.push(classes.NoItem);

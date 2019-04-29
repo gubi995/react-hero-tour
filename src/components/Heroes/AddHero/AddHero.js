@@ -2,12 +2,18 @@ import React from 'react';
 
 import classes from './AddHero.module.scss';
 
-export default function AddHero() {
+const AddHero = props => {
   return (
     <div className={classes.AddHero}>
       <p>Hero name:</p>
-      <input type="text" />
-      <button>Add</button>
+      <input
+        type="text"
+        onChange={event => props.changed(event)}
+        value={props.heroName}
+      />
+      <button onClick={() => props.addHandler(props.heroName)}>Add</button>
     </div>
   );
-}
+};
+
+export default AddHero;

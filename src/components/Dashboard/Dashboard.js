@@ -8,12 +8,12 @@ import * as keyCodes from '../../shared/keyCodes';
 class Dashboard extends Component {
   state = {
     heroes: [
-      'Batman',
-      'Flash',
-      'Superman',
-      'Green lantern',
-      'Aquaman',
-      'Spider-Man'
+      { id: 1, name: 'Batman' },
+      { id: 2, name: 'Flash' },
+      { id: 3, name: 'Superman' },
+      { id: 4, name: 'Green lantern' },
+      { id: 5, name: 'Aquaman' },
+      { id: 6, name: 'Spider-Man' }
     ],
     filteredHeroes: [],
     inputValue: '',
@@ -26,8 +26,8 @@ class Dashboard extends Component {
     let filteredHeroes;
 
     if (inputValue) {
-      filteredHeroes = this.state.heroes.filter(heroName =>
-        heroName.toLowerCase().includes(inputValue.toLowerCase())
+      filteredHeroes = this.state.heroes.filter(hero =>
+        hero.name.toLowerCase().includes(inputValue.toLowerCase())
       );
     }
 
@@ -77,14 +77,14 @@ class Dashboard extends Component {
 
   selectItem = () => {
     this.setState(prevState => ({
-      inputValue: prevState.filteredHeroes[prevState.selectedItemIndex],
+      inputValue: prevState.filteredHeroes[prevState.selectedItemIndex].name,
       searchContainerOpened: false
     }));
   };
 
   itemClickHandler = index => {
     this.setState({
-      inputValue: this.state.filteredHeroes[index],
+      inputValue: this.state.filteredHeroes[index].name,
       searchContainerOpened: false
     });
   };
