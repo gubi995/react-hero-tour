@@ -1,0 +1,33 @@
+@import '../../styles/variables.scss';
+
+.Detail {
+  display: flex;
+  flex-direction: column;
+
+  .HeroName {
+    color: $primary-color;
+  }
+
+  .ButtonContainer {
+    display: flex;
+    margin: 16px 0;
+    > * {
+      width: 100%;
+      &:first-child {
+        margin-right: 10px;
+      }
+    }
+  }
+}
+
+@media (min-width: 600px) {
+  .Detail {
+    width: 400px;
+
+    .ButtonContainer {
+      > * {
+        width: auto;
+      }
+    }
+  }
+}
