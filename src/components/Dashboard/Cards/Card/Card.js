@@ -2,8 +2,8 @@ import React from 'react';
 
 import classes from './Card.module.scss';
 
-const Card = props => {
-  return <div className={classes.Card}>{props.name}</div>;
+const Card = ({ name }) => {
+  return <div className={classes.Card}>{name}</div>;
 };
 
 export default Card;

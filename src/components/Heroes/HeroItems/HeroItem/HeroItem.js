@@ -2,9 +2,7 @@ import React from 'react';
 
 import classes from './HeroItem.module.scss';
 
-const HeroItem = props => {
-  const hero = props.hero;
-
+const HeroItem = ({ hero, deleteHandler }) => {
   return (
     <div className={classes.HeroItem}>
       <div className={classes.HeroId}>{hero.id}</div>
@@ -12,7 +10,7 @@ const HeroItem = props => {
         {hero.name}
         <div
           className={classes.DeleteButton}
-          onClick={() => props.deleteHandler(hero.id)}
+          onClick={() => deleteHandler(hero.id)}
         >
           X
         </div>

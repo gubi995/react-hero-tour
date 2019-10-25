@@ -2,16 +2,12 @@ import React from 'react';
 
 import classes from './AddHero.module.scss';
 
-const AddHero = props => {
+const AddHero = ({ heroName, changed, addHandler }) => {
   return (
     <div className={classes.AddHero}>
       <p>Hero name:</p>
-      <input
-        type="text"
-        onChange={event => props.changed(event)}
-        value={props.heroName}
-      />
-      <button onClick={() => props.addHandler(props.heroName)}>Add</button>
+      <input type="text" onChange={event => changed(event)} value={heroName} />
+      <button onClick={() => addHandler(heroName)}>Add</button>
     </div>
   );
 };

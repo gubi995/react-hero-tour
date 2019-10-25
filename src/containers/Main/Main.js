@@ -5,6 +5,7 @@ import Dashboard from '../../components/Dashboard/Dashboard';
 import Detail from '../../components/Detail/Detail';
 import Heroes from '../../components/Heroes/Heroes';
 import PageNotFound from '../../components/PageNotFound/PageNotFound';
+
 import classes from './Main.module.scss';
 
 class Main extends Component {

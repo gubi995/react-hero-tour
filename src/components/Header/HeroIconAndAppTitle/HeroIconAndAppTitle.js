@@ -4,9 +4,9 @@ import { withRouter } from 'react-router-dom';
 import HeroIcon from '../HeroIcon/HeroIcon';
 import classes from './HeroIconAndAppTitle.module.scss';
 
-const HeroIconAndAppTitle = props => {
+const HeroIconAndAppTitle = ({ history }) => {
   const navigateToDashboard = () => {
-    props.history.push('/dashboard');
+    history.push('/dashboard');
   };
 
   return (
